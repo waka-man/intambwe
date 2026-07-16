@@ -1,0 +1,94 @@
+---
+import { asset } from '../lib/assets';
+const nav = [
+  { label: 'Work', href: '#work' },
+  { label: 'Capabilities', href: '#capabilities' },
+  { label: 'Studio', href: '#studio' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+<header data-header class="site-header">
+  <div class="wrap head">
+    <a href="#top" class="brand" aria-label="Intambwe — home">
+      <img src={asset('images/logo-blue.png')} alt="" class="brand__mark" width="30" height="30" />
+      <span class="brand__word">Intambwe</span>
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      {nav.map((n) => <a href={n.href} class="nav-desktop__link">{n.label}</a>)}
+    </nav>
+
+    <div class="head__right">
+      <a href="#contact" class="btn btn--solid" data-magnetic>Start a project</a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile nav -->
+  <div class="nav-panel" data-nav-panel>
+    <nav class="nav-panel__inner" aria-label="Mobile">
+      {nav.map((n, i) => (
+        <a href={n.href} class="nav-panel__link">
+          <span class="num">0{i + 1}</span>{n.label}
+        </a>
+      ))}
+      <a href="#contact" class="btn btn--solid nav-panel__cta">Start a project →</a>
+    </nav>
+    <div class="nav-panel__foot">
+      <span class="eyebrow">Kigali, RW</span>
+      <span class="mono">hello@intambwe.rw</span>
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding-block: clamp(0.9rem, 1.6vw, 1.5rem);
+    transition: background 0.4s var(--ease), border-color 0.4s var(--ease), padding 0.4s var(--ease);
+    border-bottom: 1px solid transparent;
+  }
+  .site-header.is-scrolled {
+    background: rgba(10, 10, 12, 0.72);
+    backdrop-filter: blur(14px) saturate(140%);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    border-bottom-color: var(--line);
+  }
+  .head { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+  .brand { display: inline-flex; align-items: center; gap: 0.55rem; }
+  .brand__mark { width: 26px; height: 26px; object-fit: contain; }
+  .brand__word { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; letter-spacing: -0.03em; }
+  .nav-desktop { display: none; gap: clamp(1.2rem, 2.4vw, 2.4rem); }
+  .nav-desktop__link { font-family: var(--font-mono); font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); transition: color 0.3s; }
+  .nav-desktop__link:hover { color: var(--ink); }
+  .head__right { display: flex; align-items: center; gap: 1rem; }
+  .head__right .btn { display: none; }
+
+  .nav-toggle { display: flex; flex-direction: column; gap: 6px; padding: 8px; }
+  .nav-toggle span { width: 24px; height: 1.5px; background: var(--ink); transition: transform 0.35s var(--ease-out), opacity 0.2s; }
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) { transform: translateY(-7.5px) rotate(-45deg); }
+
+  .nav-panel {
+    position: fixed; inset: 0 0 0 auto; width: min(86vw, 460px); z-index: 99;
+    background: var(--bg-2); border-left: 1px solid var(--line);
+    transform: translateX(100%); transition: transform 0.6s var(--ease-out);
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: clamp(7rem, 16vh, 10rem) var(--pad) 2.5rem;
+  }
+  .nav-panel.is-open { transform: translateX(0); }
+  .nav-panel__inner { display: flex; flex-direction: column; gap: 0.4rem; }
+  .nav-panel__link { display: flex; align-items: baseline; gap: 1rem; font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 8vw, 3.4rem); letter-spacing: -0.03em; padding: 0.3rem 0; }
+  .nav-panel__link .num { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-faint); letter-spacing: 0.1em; }
+  .nav-panel__cta { margin-top: 1.6rem; align-self: flex-start; }
+  .nav-panel__foot { display: flex; flex-direction: column; gap: 0.4rem; color: var(--ink-dim); }
+
+  @media (min-width: 860px) {
+    .nav-desktop { display: flex; }
+    .head__right .btn { display: inline-flex; }
+    .nav-toggle { display: none; }
+    .nav-panel { display: none; }
+  }
+</style>

@@ -1,0 +1,56 @@
+---
+const year = new Date().getFullYear();
+const cols = [
+  {
+    h: 'Studio',
+    links: [['Work', '#work'], ['Capabilities', '#capabilities'], ['Philosophy', '#philosophy'], ['Studio', '#studio']],
+  },
+  {
+    h: 'Connect',
+    links: [['Instagram', '#'], ['Behance', '#'], ['LinkedIn', '#'], ['Pinterest', '#']],
+  },
+];
+---
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <a href="#top" class="footer__word">Intambwe<span class="serif">.</span></a>
+      <div class="footer__cols">
+        {cols.map((c) => (
+          <div class="footer__col">
+            <p class="eyebrow">{c.h}</p>
+            <ul>{c.links.map(([l, h]) => <li><a href={h} class="link-u">{l}</a></li>)}</ul>
+          </div>
+        ))}
+        <div class="footer__col">
+          <p class="eyebrow">Studio</p>
+          <p class="footer__addr">Kigali Heights, 4th Floor<br/>Kigali, Rwanda</p>
+          <a href="mailto:hello@intambwe.rw" class="link-u">hello@intambwe.rw</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span class="mono footer__legal">© <span data-year>{year}</span> Intambwe Ltd. — Designed in Rwanda. Crafted for the World.</span>
+      <span class="mono footer__clock">Kigali <span data-clock>—</span></span>
+      <a href="#top" class="footer__topbtn mono">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer { border-top: 1px solid var(--line); background: var(--bg); padding-block: clamp(3.5rem, 8vw, 6rem) 2.5rem; }
+  .footer__top { display: grid; grid-template-columns: 1fr; gap: clamp(2.5rem, 6vw, 4rem); align-items: start; }
+  .footer__word { font-family: var(--font-display); font-weight: 600; font-size: clamp(3rem, 14vw, 9rem); letter-spacing: -0.05em; line-height: 0.85; }
+  .footer__cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; }
+  .footer__col ul { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-top: 1rem; }
+  .footer__col a { color: var(--ink-2); font-size: 0.95rem; }
+  .footer__addr { color: var(--ink-dim); margin-top: 1rem; line-height: 1.5; }
+  .footer__col .link-u { display: inline-block; }
+  .footer__bottom { display: flex; flex-wrap: wrap; gap: 1rem 2rem; justify-content: space-between; align-items: center; margin-top: clamp(3rem, 8vw, 5.5rem); padding-top: 1.6rem; border-top: 1px solid var(--line); color: var(--ink-faint); font-size: 0.72rem; }
+  .footer__topbtn { color: var(--ink-dim); transition: color 0.3s; }
+  .footer__topbtn:hover { color: var(--ink); }
+  @media (min-width: 860px) {
+    .footer__top { grid-template-columns: 1.4fr 1fr; }
+  }
+</style>

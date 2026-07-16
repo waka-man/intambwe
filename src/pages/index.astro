@@ -1,0 +1,312 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Marquee from '../components/Marquee.astro';
+import { asset } from '../lib/assets';
+
+const services = [
+  ['Brand Strategy & Visual Identity', 'Identity systems, naming, art direction'],
+  ['Interior Design', 'Hospitality, commercial, residential environments'],
+  ['Furniture Design & Manufacturing', 'Bespoke collections and custom pieces'],
+  ['Lighting Design', 'Atmosphere-defining illumination systems'],
+  ['Signage & Environmental Graphics', 'Three-dimensional brand expression'],
+  ['Wayfinding Systems', 'Navigation as an extension of identity'],
+  ['Product Design', 'Objects that endure and delight'],
+  ['Exhibition & Retail Design', 'Immersive commercial experiences'],
+  ['Creative Direction', 'Cohesive vision across every touchpoint'],
+  ['Digital Experiences', 'Brand-led web and motion design'],
+  ['Events & Brand Activations', 'Moments that move culture'],
+];
+
+const work = [
+  { src: '/images/work/alzuri-01.webp', span: 'tall', title: 'Alzuri', meta: 'Nightclub · Interior · Lighting' },
+  { src: '/images/work/alzuri-04.webp', span: 'wide', title: 'Alzuri', meta: 'Bar & Lounge' },
+  { src: '/images/work/alzuri-02.webp', span: 'tall', title: 'Alzuri', meta: 'Custom Lighting' },
+  { src: '/images/work/alzuri-05.webp', span: 'wide', title: 'Alzuri', meta: 'Interior Architecture' },
+  { src: '/images/work/alzuri-03.webp', span: 'tall', title: 'Alzuri', meta: 'Signage & Detail' },
+  { src: '/images/work/alzuri-07.webp', span: 'wide', title: 'Alzuri', meta: 'Ambient Mood' },
+  { src: '/images/work/alzuri-06.webp', span: 'tall', title: 'Alzuri', meta: 'Material Study' },
+  { src: '/images/work/alzuri-08.webp', span: 'wide', title: 'Alzuri', meta: 'Spatial Experience' },
+];
+---
+<Layout>
+  <Header />
+  <main id="top">
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="hero__media">
+        <img data-hero-img src={asset('images/work/alzuri-04.webp')} alt="Alzuri nightclub interior, Kigali" loading="eager" fetchpriority="high" />
+        <div class="hero__veil"></div>
+      </div>
+
+      <div class="wrap hero__inner">
+        <div class="hero__meta">
+          <span class="eyebrow">Creative Studio &amp; Design House</span>
+          <span class="eyebrow">Kigali · Rwanda</span>
+        </div>
+
+        <h1 class="hero__title display">
+          Designing <span class="serif">Africa’s</span><br/>Next Icons.
+        </h1>
+
+        <div class="hero__foot">
+          <p class="hero__lede">
+            A multidisciplinary studio building brands, interiors, furniture and
+            products — blending African creativity with contemporary global design.
+          </p>
+          <a href="#work" class="btn" data-magnetic>View Selected Work →</a>
+        </div>
+
+        <a href="#manifesto" class="hero__scroll" aria-label="Scroll">
+          <span>Scroll</span>
+          <span class="hero__scroll-line"></span>
+        </a>
+      </div>
+    </section>
+
+    <Marquee />
+
+    <!-- ===== MANIFESTO ===== -->
+    <section id="manifesto" class="section manifesto">
+      <div class="wrap manifesto__grid">
+        <div class="manifesto__label" data-reveal>
+          <span class="eyebrow">01 — Studio</span>
+        </div>
+        <div class="manifesto__body">
+          <h2 class="manifesto__quote display" data-reveal>
+            We believe great design shapes how people
+            <span class="serif">live, work</span> and connect —
+            transforming ideas into meaningful experiences through strategy,
+            craftsmanship &amp; innovation.
+          </h2>
+          <div class="manifesto__sign mono" data-reveal style="--reveal-delay:120ms">
+            Designed in Rwanda. Crafted for the World.
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ===== SELECTED WORK ===== -->
+    <section id="work" class="section work">
+      <div class="wrap">
+        <header class="work__head" data-reveal>
+          <span class="eyebrow">02 — Selected Work</span>
+          <h2 class="work__title display">Alzuri<span class="serif">.</span></h2>
+          <p class="work__intro">
+            A nightlife destination in the heart of Kigali — an immersive interior
+            system spanning space, light, signage and furniture. A study in mood,
+            material and atmosphere after dark.
+          </p>
+          <div class="work__tags mono">
+            <span>Nightclub</span><span>Interior</span><span>Lighting</span><span>Signage</span><span>Kigali, RW</span>
+          </div>
+        </header>
+      </div>
+
+      <div class="work__grid">
+        {work.map((w, i) => (
+          <figure class={`work-card work__cell work__cell--${w.span}`} data-reveal style={`--reveal-delay:${i * 60}ms`}>
+            <img src={asset(w.src)} alt={`${w.title} — ${w.meta}`} loading="lazy" />
+            <figcaption class="meta">
+              <span class="mono">{w.meta}</span>
+              <span class="work__cell-num mono">0{i + 1}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+
+      <div class="wrap">
+        <div class="work__foot" data-reveal>
+          <p class="mono">Case study in development</p>
+          <a href="#contact" class="link-u">Discuss a similar project →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CAPABILITIES ===== -->
+    <section id="capabilities" class="section caps">
+      <div class="wrap">
+        <header class="caps__head" data-reveal>
+          <span class="eyebrow">03 — Capabilities</span>
+          <h2 class="caps__title display">What we<br/>do<span class="serif">.</span></h2>
+        </header>
+
+        <div class="caps__list">
+          <div class="row-list" data-reveal>
+            {services.map((s, i) => (
+              <div class="row-list__item" data-cursor>
+                <span class="num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="title">{s[0]}</span>
+                <span class="arr">→</span>
+              </div>
+            ))}
+          </div>
+          <aside class="caps__aside" data-reveal style="--reveal-delay:120ms">
+            <p class="eyebrow">Approach</p>
+            <p class="caps__aside-body">
+              Every project begins with a story and develops into a cohesive design
+              system extending across identity, space, products and culture. We bring
+              together graphic design, interior architecture, product design, branding
+              and storytelling to deliver timeless, emotionally engaging solutions.
+            </p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PHILOSOPHY ===== -->
+    <section id="philosophy" class="section phil">
+      <div class="wrap">
+        <div class="phil__inner" data-reveal>
+          <span class="eyebrow">04 — Philosophy</span>
+          <blockquote class="phil__quote display">
+            “Design is more than aesthetics. It is a powerful tool for shaping
+            <span class="serif">experiences</span>, influencing culture, and creating
+            meaningful <span class="serif">connections</span>.”
+          </blockquote>
+          <p class="phil__note mono">
+            Every graphic, every material, every space and every product is part of one unified design language.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== STUDIO (Vision / Mission) ===== -->
+    <section id="studio" class="section studio">
+      <div class="wrap">
+        <header class="studio__head" data-reveal>
+          <span class="eyebrow">05 — Studio</span>
+          <h2 class="studio__title display">
+            Becoming Africa’s<br/>leading <span class="serif">design house.</span>
+          </h2>
+        </header>
+
+        <div class="studio__cards">
+          <article class="studio__card" data-reveal>
+            <span class="studio__num mono">V</span>
+            <h3 class="display">Vision</h3>
+            <p>
+              To become Africa’s leading design house — creating globally recognized
+              brands, interiors, furniture, lighting and products that celebrate
+              African innovation, craftsmanship and culture.
+            </p>
+          </article>
+          <article class="studio__card" data-reveal style="--reveal-delay:90ms">
+            <span class="studio__num mono">M</span>
+            <h3 class="display">Mission</h3>
+            <p>
+              To elevate businesses, communities and lifestyles through thoughtful
+              design that merges creativity, functionality and lasting value — while
+              showcasing the excellence of African design to the world.
+            </p>
+          </article>
+          <article class="studio__card studio__card--brand" data-reveal style="--reveal-delay:180ms">
+            <span class="studio__num mono">ID</span>
+            <h3 class="display">Identity</h3>
+            <div class="studio__logos">
+              <div class="studio__logo studio__logo--light"><img src={asset('images/logo-blue.png')} alt="Intambwe mark" loading="lazy" /></div>
+              <div class="studio__logo studio__logo--dark"><img src={asset('images/logo-white.png')} alt="Intambwe wordmark" loading="lazy" /></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT / CTA ===== -->
+    <section id="contact" class="section contact">
+      <div class="wrap contact__inner">
+        <span class="eyebrow" data-reveal>06 — Contact</span>
+        <h2 class="contact__title display" data-reveal>
+          Let’s build something<br/><span class="serif">iconic.</span>
+        </h2>
+        <a href="mailto:hello@intambwe.rw" class="contact__email link-u" data-reveal>hello@intambwe.rw</a>
+        <div class="contact__cta" data-reveal>
+          <a href="mailto:hello@intambwe.rw?subject=New%20project%20enquiry" class="btn btn--solid" data-magnetic>Start a project →</a>
+          <p class="contact__avail mono">Currently accepting select projects for the upcoming season.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* ===== HERO ===== */
+  .hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; padding-top: 6rem; }
+  .hero__media { position: absolute; inset: 0; z-index: 0; }
+  .hero__media img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.06); will-change: transform; }
+  .hero__veil { position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 30%, rgba(10,10,12,0.05), rgba(10,10,12,0.55) 45%, rgba(10,10,12,0.92) 100%); }
+  .hero__inner { position: relative; z-index: 2; width: 100%; display: grid; gap: clamp(1.5rem, 4vh, 3rem); padding-bottom: clamp(2.5rem, 6vh, 4.5rem); }
+  .hero__meta { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .hero__title { font-size: var(--step-5); max-width: 14ch; }
+  .hero__foot { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1.5rem 2.5rem; }
+  .hero__lede { max-width: 42ch; color: var(--ink-2); font-size: var(--step-1); }
+  .hero__scroll { position: absolute; right: var(--pad); bottom: clamp(1.2rem, 3vh, 2.4rem); display: none; flex-direction: column; align-items: center; gap: 0.6rem; }
+  .hero__scroll span:first-child { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-dim); writing-mode: vertical-rl; }
+  .hero__scroll-line { width: 1px; height: 60px; background: linear-gradient(var(--ink), transparent); animation: scrolly 2s var(--ease) infinite; }
+  @keyframes scrolly { 0% { transform: scaleY(0); transform-origin: top; } 50% { transform: scaleY(1); transform-origin: top; } 51% { transform-origin: bottom; } 100% { transform: scaleY(0); transform-origin: bottom; } }
+
+  /* ===== MANIFESTO ===== */
+  .manifesto { padding-top: clamp(4rem, 10vh, 8rem); }
+  .manifesto__grid { display: grid; grid-template-columns: 1fr; gap: clamp(1.5rem, 4vw, 3rem); }
+  .manifesto__quote { font-size: var(--step-4); max-width: 22ch; }
+  .manifesto__sign { margin-top: clamp(1.5rem, 4vw, 2.5rem); color: var(--accent-2); font-size: 0.8rem; letter-spacing: 0.16em; }
+  @media (min-width: 760px) { .manifesto__grid { grid-template-columns: 0.4fr 1fr; } }
+
+  /* ===== WORK ===== */
+  .work__head { display: grid; gap: 1rem; margin-bottom: clamp(2.5rem, 6vw, 4rem); max-width: 70ch; }
+  .work__title { font-size: var(--step-5); }
+  .work__intro { color: var(--ink-2); max-width: 52ch; font-size: var(--step-1); }
+  .work__tags { display: flex; flex-wrap: wrap; gap: 0.8rem; color: var(--ink-dim); font-size: 0.7rem; margin-top: 0.5rem; }
+  .work__tags span { padding: 0.4em 0.9em; border: 1px solid var(--line-2); border-radius: 100px; }
+  .work__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(0.6rem, 1.4vw, 1.1rem); max-width: var(--maxw); margin-inline: auto; padding-inline: clamp(0.6rem, 1.4vw, 1.1rem); }
+  .work__cell { aspect-ratio: 4 / 5; }
+  .work__cell--wide { aspect-ratio: 16 / 10; grid-column: span 2; }
+  .work__cell--tall { aspect-ratio: 4 / 5; }
+  @media (min-width: 720px) { .work__grid { grid-template-columns: repeat(4, 1fr); } .work__cell--wide { grid-column: span 2; } }
+  .work__cell .meta .work__cell-num { color: var(--ink-2); }
+  .work__foot { display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-top: clamp(2rem, 5vw, 3.5rem); color: var(--ink-dim); }
+</style>
+
+<style>
+  /* ===== CAPABILITIES ===== */
+  .caps__head { display: grid; gap: 1rem; margin-bottom: clamp(2.5rem, 6vw, 4rem); }
+  .caps__title { font-size: var(--step-4); }
+  .caps__list { display: grid; grid-template-columns: 1fr; gap: clamp(2rem, 5vw, 4rem); align-items: start; }
+  @media (min-width: 900px) { .caps__list { grid-template-columns: 1.5fr 1fr; } }
+  .caps__aside { position: sticky; top: 6rem; color: var(--ink-dim); }
+  .caps__aside-body { margin-top: 1rem; color: var(--ink-2); font-size: var(--step-1); line-height: 1.5; max-width: 40ch; }
+
+  /* ===== PHILOSOPHY ===== */
+  .phil { border-block: 1px solid var(--line); background: var(--bg-2); }
+  .phil__inner { display: grid; gap: 1.4rem; max-width: 60ch; }
+  .phil__quote { font-size: var(--step-4); line-height: 1.04; }
+  .phil__note { color: var(--ink-dim); font-size: 0.78rem; letter-spacing: 0.14em; line-height: 1.6; }
+
+  /* ===== STUDIO ===== */
+  .studio__head { display: grid; gap: 1rem; margin-bottom: clamp(2.5rem, 6vw, 4rem); max-width: 30ch; }
+  .studio__title { font-size: var(--step-4); }
+  .studio__cards { display: grid; grid-template-columns: 1fr; gap: clamp(1rem, 2.4vw, 1.6rem); }
+  @media (min-width: 760px) { .studio__cards { grid-template-columns: repeat(3, 1fr); } }
+  .studio__card { border: 1px solid var(--line); padding: clamp(1.6rem, 3vw, 2.4rem); display: grid; gap: 0.9rem; align-content: start; min-height: 16rem; }
+  .studio__num { font-size: 0.72rem; color: var(--accent-2); }
+  .studio__card h3 { font-size: var(--step-2); }
+  .studio__card p { color: var(--ink-2); font-size: 0.98rem; line-height: 1.55; }
+  .studio__card--brand { background: var(--bg-3); }
+  .studio__logos { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: auto; }
+  .studio__logo { aspect-ratio: 1; display: grid; place-items: center; padding: 1rem; border: 1px solid var(--line); }
+  .studio__logo img { max-height: 70%; max-width: 80%; object-fit: contain; }
+  .studio__logo--light { background: #f3efe6; }
+  .studio__logo--dark { background: #000; }
+
+  /* ===== CONTACT ===== */
+  .contact { border-top: 1px solid var(--line); }
+  .contact__inner { display: grid; gap: 1.4rem; justify-items: start; }
+  .contact__title { font-size: var(--step-5); }
+  .contact__email { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.4rem, 1rem + 3.4vw, 3.4rem); letter-spacing: -0.03em; }
+  .contact__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 1.2rem 2rem; margin-top: 1rem; }
+  .contact__avail { color: var(--ink-dim); font-size: 0.74rem; }
+
+  @media (min-width: 900px) { .hero__scroll { display: flex; } }
+</style>
+

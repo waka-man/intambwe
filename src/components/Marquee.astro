@@ -1,0 +1,16 @@
+---
+const items = [
+  'Brand Identity', 'Interior Design', 'Furniture', 'Lighting',
+  'Signage & Wayfinding', 'Product Design', 'Retail & Exhibition', 'Creative Direction', 'Digital Experiences',
+];
+const seq = [...items, ...items];
+---
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    {seq.map((it, i) => (
+      <span class={`marquee__item ${i % 2 ? 'is-dim' : ''}`}>
+        {it}<span class="dot"></span>
+      </span>
+    ))}
+  </div>
+</div>
