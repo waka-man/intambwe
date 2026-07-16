@@ -14,3 +14,5 @@ pnpm-debug.log*
 .DS_Store
 # astro
 .astro/
+# local dev notes (not published)
+README_DEV.md
